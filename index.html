@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <script src="js/cdn.min.js"></script>
+</head>
+
+<body x-data="{navbarIsOpen : false , scrollFromTop : false}" @scroll.window="window.pageYOffset > 60 ? scrollFromTop = true : scrollFromTop = false" :class="{'overflow-hidden md:overflow-auto': navbarIsOpen, 'overflow-auto': !navbarIsOpen}">
+  <header class="fixed z-10 w-full h-24 transition-all duration-200" :class="{'h-32': !scrollFromTop , 'h-20 bg-[#6432a9] text-white shadow-md': scrollFromTop || navbarIsOpen}">
+    <div class="lg:max-w-[110rem] mx-auto flex justify-between items-center px-4 md:px-12 h-full" >
+      <a href="#" class="flex items-center space-x-3">
+        <img src="assets/logo.webp" alt="Logo" class="h-10 transition-all duration-200" :class="{'h-10': !scrollFromTop , 'h-8': scrollFromTop}">
+        <span class="text-2xl md:text-3xl font-bold transition-all duration-200" :class="{'text-2xl md:text-3xl': !scrollFromTop , 'text-xl md:text-2xl': scrollFromTop}">COMPANY NAME</span>
+      </a>
+      <nav>
+        <button @click="navbarIsOpen = !navbarIsOpen" class="md:hidden">
+          <svg x-show="!navbarIsOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="navbarIsOpen" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <ul x-data="{ links : ['home', 'product', 'services', 'about']}" class="fixed left-0 right-0 min-h-screen space-y-4 p-4 translate-x-full duration-200 bg-[#6432a9] md:relative md:flex md:translate-x-0 md:space-y-0 md:min-h-0 md:space-x-6 md:p-0 font-bold text-xl lg:text-gray-600 md:bg-transparent" :class="{'translate-x-full': !navbarIsOpen,'translate-x-0' : navbarIsOpen}">
+          <template x-for="link in links">
+            <li>
+              <a href="#" x-text="link" class="capitalize"></a>
+            </li>
+        </template>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="pt-32 px-4 min-h-screen flex items-center">
+    <div class="md:max-w-2xl lg:max-w-[80rem] mx-auto lg:flex lg:items-center lg:justify-between lg:space-x-20">
+       <div class="lg:flex-1 md:mr-6 space-y-10">
+          <h1 class="font-black text-3xl md:text-6xl text-[#6432a9] capitalize leading-tight">
+            computer programmers
+          </h1>
+          <p class="mt-4 text-lg text-gray-600">
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus eius odit deserunt quis, inventore neque veniam dolore provident cumque impedit similique atque, quaerat nemo expedita, accusantium dolorem dicta? Aperiam, deserunt reiciendis. Tempore et nihil eius maiores nisi corporis doloribus! Nostrum?
+          </p>
+          <button class="bg-[#6432a9] duration-500 hover:-translate-y-2 text-gray-100 text-2xl px-8 py-2 rounded-full capitalize">learn more</button>
+       </div>
+       <div class="lg:flex-1">
+          <img
+             src="assets/landing.webp"
+             alt="Landing"
+          />
+       </div>
+    </div>
+  </section>
+  <!-- 
+    css 
+      @layer base {
+        html {
+            scroll-behavior: smooth;
+        }
+      }
+
+      body {
+        font-family: 'Open Sans', sans-serif;
+      }
+   -->
+</body>
+</html>
